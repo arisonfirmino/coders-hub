@@ -1,8 +1,11 @@
+"use client";
+
 import SignInButton from "@/app/(home)/components/signin/signin-button";
+import { signIn } from "next-auth/react";
 
 const SignInGitHub = () => {
   return (
-    <SignInButton>
+    <SignInButton handleSignInClick={() => signIn("github")}>
       <svg
         width="16"
         height="16"

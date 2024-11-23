@@ -1,17 +1,31 @@
-import SignInGoogle from "@/app/(home)/components/signin/signin-google";
-import SignInGitHub from "@/app/(home)/components/signin/signin-github";
+import { authOptions } from "@/app/lib/auth";
+import { getServerSession } from "next-auth";
+import { db } from "@/app/lib/prisma";
+import SignInSection from "@/app/(home)/components/signin/signin-section";
+import UserSection from "@/app/(home)/components/user-section";
+import NewPost from "@/app/(home)/components/new-post";
 
-const Header = () => {
+const Header = async () => {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return <SignInSection />;
+  }
+
+  const user = await db.user.findUnique({
+    where: {
+      id: session.user.id,
+    },
+  });
+
+  if (!user) {
+    return <SignInSection />;
+  }
+
   return (
-    <header className="flex flex-col gap-5">
-      <p className="text-center text-xs text-gray-400">
-        © 2024 Arison. All Rights Reserved
-      </p>
-
-      <div className="flex flex-col gap-5 md:flex-row">
-        <SignInGoogle />
-        <SignInGitHub />
-      </div>
+    <header className="flex flex-col items-center gap-5 md:flex-row md:justify-between">
+      <UserSection user={user} />
+      <NewPost />
     </header>
   );
 };
