@@ -1,6 +1,7 @@
 import Container from "@/app/components/container";
 import Header from "@/app/(home)/components/header";
 import Search from "@/app/(home)/components/search";
+import PostsList from "@/app/(home)/components/post/posts-list";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
         <Header />
       </div>
       <Search />
+      <PostsList />
     </Container>
   );
 };
