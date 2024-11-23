@@ -46,5 +46,34 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
+  posts Post[]
+
   @@map("users")
+}
+
+model Post {
+  id           String   @id @default(cuid()) @map("_id")
+  project_name String
+  description  String?
+  deploy       String?
+  topicIds     String[]
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  topics Topic[]
+
+  created_at DateTime @default(now())
+
+  @@map("posts")
+}
+
+model Topic {
+  id         String @id @default(cuid()) @map("_id")
+  topic_name String
+
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String
+
+  @@map("topics")
 }

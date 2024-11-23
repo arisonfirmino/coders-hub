@@ -23,7 +23,7 @@ const Header = async () => {
   }
 
   return (
-    <header className="flex flex-col items-center gap-5 md:flex-row md:justify-between">
+    <header className="border-bottom flex flex-col items-center gap-5 pb-5 md:flex-row md:justify-between">
       <UserSection user={user} />
       <NewPost />
     </header>

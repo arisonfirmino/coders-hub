@@ -5,7 +5,7 @@ const CommentsLink = () => {
   return (
     <Link href="/comments" className="flex items-center gap-2">
       <MessageCircleMoreIcon size={16} className="text-gray-400" />
-      <span>30</span>
+      <span>0</span>
     </Link>
   );
 };

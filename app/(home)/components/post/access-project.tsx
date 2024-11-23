@@ -1,9 +1,9 @@
 import { GlobeIcon } from "lucide-react";
 
-const AccessProject = () => {
+const AccessProject = ({ deploy }: { deploy: string }) => {
   return (
     <a
-      href="#"
+      href={deploy}
       target="_blank"
       rel="noreferrer"
       className="flex w-full items-center justify-center text-nowrap rounded-xl bg-background py-2.5 text-sm uppercase md:justify-between md:px-5"

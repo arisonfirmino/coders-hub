@@ -4,7 +4,7 @@ const LikeButton = () => {
   return (
     <button className="flex items-center gap-2">
       <StarIcon size={16} className="text-gray-400" />
-      <span className="text-sm">150</span>
+      <span className="text-sm">0</span>
     </button>
   );
 };
