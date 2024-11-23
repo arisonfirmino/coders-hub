@@ -6,9 +6,9 @@ const AccessProject = () => {
       href="#"
       target="_blank"
       rel="noreferrer"
-      className="flex w-full items-center justify-center rounded-xl bg-background px-5 py-2.5 text-sm uppercase md:justify-between"
+      className="flex w-full items-center justify-center text-nowrap rounded-xl bg-background py-2.5 text-sm uppercase md:justify-between md:px-5"
     >
-      Acesse meu projeto
+      Ver projeto
       <GlobeIcon size={14} className="hidden md:flex" />
     </a>
   );

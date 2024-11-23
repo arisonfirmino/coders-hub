@@ -15,7 +15,7 @@ const PostItem = () => {
         </p>
       </div>
       <Tags />
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-2.5">
         <AccessProject />
         <span className="text-gray-400">|</span>
         <Interactions />
