@@ -10,18 +10,16 @@ import { redirect } from "next/navigation";
 import CommentsList from "@/app/(comments)/components/comments-list";
 import CommentForm from "@/app/(comments)/components/comment-form";
 
-interface CommentsPageProps {
-  params: {
-    id: string;
-  };
-}
-
-const CommentsPage = async ({ params }: CommentsPageProps) => {
-  const { id } = params;
+const CommentsPage = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) => {
+  const resolvedParams = await params;
 
   const post = await db.post.findUnique({
     where: {
-      id: id,
+      id: resolvedParams.id,
     },
     include: {
       user: true,
