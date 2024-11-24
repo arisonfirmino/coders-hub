@@ -29,6 +29,7 @@ const CommentsPage = async ({
           created_at: "desc",
         },
         include: {
+          user: true,
           post: {
             include: {
               user: true,
@@ -79,11 +80,7 @@ const CommentsPage = async ({
         <CommentsList comments={post.comments} />
       </div>
 
-      <CommentForm
-        userId={post.user.id}
-        postId={post.id}
-        name={post.user.name ?? ""}
-      />
+      <CommentForm postId={post.id} name={post.user.name ?? ""} />
     </Container>
   );
 };

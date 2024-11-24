@@ -8,6 +8,7 @@ import DeleteComment from "@/app/(comments)/components/delete-comment";
 interface CommentItemProps {
   comment: Prisma.CommentGetPayload<{
     include: {
+      user: true;
       post: {
         include: {
           user: true;
@@ -25,7 +26,7 @@ const CommentItem = ({ comment }: CommentItemProps) => {
       <PostUser post={comment.post} />
       <p>{comment.comment}</p>
 
-      {comment.post.user.email === session?.user.email && (
+      {comment.user.email === session?.user.email && (
         <DeleteComment id={comment.id} />
       )}
     </div>

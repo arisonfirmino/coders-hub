@@ -4,6 +4,7 @@ import CommentItem from "@/app/(comments)/components/comment-item";
 interface CommentsListProps {
   comments: Prisma.CommentGetPayload<{
     include: {
+      user: true;
       post: {
         include: {
           user: true;

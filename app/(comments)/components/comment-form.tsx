@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { createNewComment } from "@/app/actions/comment";
+import { useSession } from "next-auth/react";
 
 const schema = yup.object({
   comment: yup.string().required("Este campo é obrigatório."),
@@ -17,13 +18,14 @@ const schema = yup.object({
 type FormData = yup.InferType<typeof schema>;
 
 interface CommentFormProps {
-  userId: string;
   postId: string;
   name: string;
 }
 
-const CommentForm = ({ userId, postId, name }: CommentFormProps) => {
+const CommentForm = ({ postId, name }: CommentFormProps) => {
   const [isLoading, setIsLoading] = useState(false);
+
+  const { data: session } = useSession();
 
   const {
     register,
@@ -35,16 +37,18 @@ const CommentForm = ({ userId, postId, name }: CommentFormProps) => {
   });
 
   const onSubmit = async (data: FormData) => {
-    setIsLoading(true);
+    if (session) {
+      setIsLoading(true);
 
-    await createNewComment({
-      userId: userId,
-      postId: postId,
-      comment: data.comment,
-    });
+      await createNewComment({
+        userId: session.user.id,
+        postId: postId,
+        comment: data.comment,
+      });
 
-    reset();
-    setIsLoading(false);
+      reset();
+      setIsLoading(false);
+    }
   };
 
   return (
