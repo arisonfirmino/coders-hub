@@ -1,14 +1,15 @@
-import PostUser from "@/app/(home)/components/post/post-user";
+import PostUser from "@/app/components/post-user";
 import AccessProject from "@/app/(home)/components/post/access-project";
-import Interactions from "@/app/(home)/components/interactions/interactions";
+import Interactions from "@/app/components/interactions/interactions";
 import { Prisma } from "@prisma/client";
-import Topics from "@/app/(home)/components/post/topics";
+import Topics from "@/app/components/topics";
 
 interface PostItemProps {
   post: Prisma.PostGetPayload<{
     include: {
       user: true;
       topics: true;
+      comments: true;
     };
   }>;
 }
@@ -27,7 +28,7 @@ const PostItem = ({ post }: PostItemProps) => {
       <div className="flex items-center gap-2.5 px-5 md:px-0">
         <AccessProject deploy={post.deploy ?? ""} />
         <span className="text-gray-400">|</span>
-        <Interactions />
+        <Interactions id={post.id} comments_length={post.comments.length} />
       </div>
     </div>
   );

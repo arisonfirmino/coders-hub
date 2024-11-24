@@ -46,26 +46,39 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
-  posts Post[]
+  posts    Post[]
+  comments Comment[]
 
   @@map("users")
 }
 
 model Post {
-  id           String   @id @default(cuid()) @map("_id")
+  id           String    @id @default(cuid()) @map("_id")
   project_name String
   description  String?
   deploy       String?
-  topicIds     String[]
+  topics       Topic[]
+  comments     Comment[]
+  created_at   DateTime  @default(now())
 
   user   User   @relation(fields: [userId], references: [id])
   userId String
 
-  topics Topic[]
+  @@map("posts")
+}
 
+model Comment {
+  id         String   @id @default(cuid()) @map("_id")
+  comment    String
   created_at DateTime @default(now())
 
-  @@map("posts")
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String
+
+  @@map("comments")
 }
 
 model Topic {

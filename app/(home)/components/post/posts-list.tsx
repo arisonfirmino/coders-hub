@@ -6,6 +6,7 @@ interface PostsListProps {
     include: {
       user: true;
       topics: true;
+      comments: true;
     };
   }>[];
 }

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import InputForm from "@/app/(new-post)/components/input-form";
-import TextareaForm from "@/app/(new-post)/components/textarea-form";
+import TextareaForm from "@/app/components/textarea-form";
 import SubmitButton from "@/app/(new-post)/components/submit-button";
 import InputTags from "@/app/(new-post)/components/input-topics";
 import { XIcon } from "lucide-react";
@@ -95,6 +95,7 @@ const Form = () => {
       </div>
       <div className="px-5 md:px-0">
         <TextareaForm
+          placeholder="Descrição do projeto"
           register={{ ...register("description") }}
           error={errors.description}
         />

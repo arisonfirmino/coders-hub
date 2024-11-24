@@ -9,6 +9,7 @@ const fetch = async () => {
     include: {
       user: true,
       topics: true,
+      comments: true,
     },
     orderBy: {
       created_at: "desc",
@@ -31,7 +32,9 @@ const Home = async () => {
       <div className="px-5 md:px-0">
         <Search />
       </div>
-      <PostsList posts={posts} />
+      <div className="pb-5">
+        <PostsList posts={posts} />
+      </div>
     </Container>
   );
 };
