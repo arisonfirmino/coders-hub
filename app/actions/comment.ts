@@ -56,3 +56,27 @@ export const createNewComment = async ({
 
   revalidatePath("/");
 };
+
+export const deleteComment = async ({ commentId }: { commentId: string }) => {
+  if (!commentId) {
+    throw new Error("Campos não preenchidos.");
+  }
+
+  const comment = await db.comment.findUnique({
+    where: {
+      id: commentId,
+    },
+  });
+
+  if (!comment) {
+    throw new Error("Comentário não encontrado.");
+  }
+
+  await db.comment.delete({
+    where: {
+      id: comment.id,
+    },
+  });
+
+  revalidatePath("/");
+};
