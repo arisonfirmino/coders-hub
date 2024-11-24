@@ -60,7 +60,7 @@ export interface PostHeaderProps {
 
 // post-user.tsx
 export interface PostUserProps {
-  post: Pick<PostPayloadWithRelations, "id" | "user">;
+  post: Pick<PostPayloadWithRelations, "id" | "user" | "created_at">;
 }
 
 // post-content.tsx
