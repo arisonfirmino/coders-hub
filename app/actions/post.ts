@@ -38,3 +38,27 @@ export const createNewPost = async ({
 
   revalidatePath("/");
 };
+
+export const deletePost = async ({ postId }: { postId: string }) => {
+  if (!postId) {
+    throw new Error("Publicação não encontrada.");
+  }
+
+  const post = await db.post.findUnique({
+    where: {
+      id: postId,
+    },
+  });
+
+  if (!post) {
+    throw new Error("Publicação não encontrada.");
+  }
+
+  await db.post.delete({
+    where: {
+      id: post.id,
+    },
+  });
+
+  revalidatePath("/");
+};

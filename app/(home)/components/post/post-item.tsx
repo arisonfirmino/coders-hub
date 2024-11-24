@@ -1,8 +1,12 @@
+"use client";
+
+import { useSession } from "next-auth/react";
 import PostUser from "@/app/components/post-user";
 import AccessProject from "@/app/(home)/components/post/access-project";
 import Interactions from "@/app/components/interactions/interactions";
 import { Prisma } from "@prisma/client";
 import Topics from "@/app/components/topics";
+import DeletePost from "@/app/(home)/components/post/delete-post";
 
 interface PostItemProps {
   post: Prisma.PostGetPayload<{
@@ -15,8 +19,10 @@ interface PostItemProps {
 }
 
 const PostItem = ({ post }: PostItemProps) => {
+  const { data: session } = useSession();
+
   return (
-    <div className="border-bottom space-y-2.5 pb-5">
+    <div className="border-bottom relative space-y-2.5 pb-5">
       <div className="px-5 md:px-0">
         <PostUser post={post} />
       </div>
@@ -30,6 +36,7 @@ const PostItem = ({ post }: PostItemProps) => {
         <span className="text-gray-400">|</span>
         <Interactions id={post.id} comments_length={post.comments.length} />
       </div>
+      {post.user.email === session?.user.email && <DeletePost id={post.id} />}
     </div>
   );
 };
