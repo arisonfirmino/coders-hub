@@ -1,5 +1,5 @@
-import SignInGoogle from "@/app/(home)/components/signin/signin-google";
-import SignInGitHub from "@/app/(home)/components/signin/signin-github";
+import SignInGoogle from "@/app/(home)/components/auth/signin-google";
+import SignInGitHub from "@/app/(home)/components/auth/signin-github";
 
 const SignInSection = () => {
   return (

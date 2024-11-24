@@ -2,15 +2,22 @@
 
 import { useState } from "react";
 import { LoaderCircleIcon, Trash2Icon } from "lucide-react";
-import { deletePost } from "@/app/actions/post";
 
-const DeletePost = ({ id }: { id: string }) => {
+interface DeleteButtonProps {
+  id: string;
+  onDelete: (id: string) => Promise<void>;
+  onSuccess?: () => void;
+}
+
+const DeleteButton = ({ id, onDelete, onSuccess }: DeleteButtonProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleDeleteClick = async () => {
     setIsLoading(true);
 
-    await deletePost({ postId: id });
+    await onDelete(id);
+
+    if (onSuccess) onSuccess();
 
     setIsLoading(false);
   };
@@ -19,7 +26,7 @@ const DeletePost = ({ id }: { id: string }) => {
     <button
       disabled={isLoading}
       onClick={handleDeleteClick}
-      className={`absolute -top-1.5 right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 ${isLoading ? "cursor-not-allowed" : ""}`}
+      className={`flex h-5 w-5 items-center justify-center rounded-full bg-red-600 ${isLoading ? "cursor-not-allowed" : ""} `}
     >
       {isLoading ? (
         <LoaderCircleIcon size={12} className="animate-spin" />
@@ -30,4 +37,4 @@ const DeletePost = ({ id }: { id: string }) => {
   );
 };
 
-export default DeletePost;
+export default DeleteButton;

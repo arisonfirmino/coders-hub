@@ -1,8 +1,9 @@
 "use client";
 
-import { MessageCircleMoreIcon } from "lucide-react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
+
+import { MessageCircleMoreIcon } from "lucide-react";
 
 interface CommentsLinkProps {
   id: string;

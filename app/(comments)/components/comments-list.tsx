@@ -1,18 +1,6 @@
-import { Prisma } from "@prisma/client";
 import CommentItem from "@/app/(comments)/components/comment-item";
 
-interface CommentsListProps {
-  comments: Prisma.CommentGetPayload<{
-    include: {
-      user: true;
-      post: {
-        include: {
-          user: true;
-        };
-      };
-    };
-  }>[];
-}
+import { CommentsListProps } from "@/app/types";
 
 const CommentsList = ({ comments }: CommentsListProps) => {
   return (

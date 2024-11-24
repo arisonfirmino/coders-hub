@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { User } from "@prisma/client";
-import UserAvatar from "@/app/(home)/components/user-avatar";
-import { XCircleIcon } from "lucide-react";
 import { signOut } from "next-auth/react";
 
-interface SignOutButtonProps {
-  user: User;
-}
+import { XCircleIcon } from "lucide-react";
+
+import UserAvatar from "@/app/(home)/components/header/user-avatar";
+
+import { SignOutButtonProps } from "@/app/types";
 
 const SignOutButton = ({ user }: SignOutButtonProps) => {
   const [isHover, setIsHover] = useState(false);

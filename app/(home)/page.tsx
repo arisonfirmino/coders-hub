@@ -1,38 +1,27 @@
 import Container from "@/app/components/container";
-import Header from "@/app/(home)/components/header";
+import Header from "@/app/(home)/components/header/header";
 import Search from "@/app/(home)/components/search";
-import PostsList from "@/app/(home)/components/post/posts-list";
-import { db } from "@/app/lib/prisma";
+import PostsList from "@/app/components/posts/posts-list";
 
-const fetch = async () => {
-  const getPosts = db.post.findMany({
-    include: {
-      user: true,
-      topics: true,
-      comments: true,
-    },
-    orderBy: {
-      created_at: "desc",
-    },
-  });
+import { getPosts } from "@/app/helpers/getPost";
 
-  const [posts] = await Promise.all([getPosts]);
-
+const fetchPosts = async () => {
+  const posts = await getPosts();
   return { posts };
 };
 
 const Home = async () => {
-  const { posts } = await fetch();
+  const { posts } = await fetchPosts();
 
   return (
     <Container>
       <div className="px-5 pt-5 md:px-0">
         <Header />
       </div>
-      <div className="px-5 md:px-0">
+      <div className="px-5 pt-5 md:px-0">
         <Search />
       </div>
-      <div className="pb-5">
+      <div className="pb-5 pt-10">
         <PostsList posts={posts} />
       </div>
     </Container>

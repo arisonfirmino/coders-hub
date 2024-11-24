@@ -1,7 +1,8 @@
 "use client";
 
-import SignInButton from "@/app/(home)/components/signin/signin-button";
 import { signIn } from "next-auth/react";
+
+import SignInButton from "@/app/(home)/components/auth/signin-button";
 
 const SignInGitHub = () => {
   return (

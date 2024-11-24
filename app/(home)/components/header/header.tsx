@@ -1,9 +1,10 @@
-import { authOptions } from "@/app/lib/auth";
 import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/lib/auth";
 import { db } from "@/app/lib/prisma";
-import SignInSection from "@/app/(home)/components/signin/signin-section";
-import UserSection from "@/app/(home)/components/user-section";
-import NewPost from "@/app/(home)/components/new-post";
+
+import SignInSection from "@/app/(home)/components/auth/signin-section";
+import UserInfo from "@/app/(home)/components/header/user-info";
+import NewPostButton from "@/app/(home)/components/header/new-post-button";
 
 const Header = async () => {
   const session = await getServerSession(authOptions);
@@ -24,8 +25,8 @@ const Header = async () => {
 
   return (
     <header className="border-bottom flex flex-col items-center gap-5 pb-5 md:flex-row md:justify-between">
-      <UserSection user={user} />
-      <NewPost />
+      <UserInfo user={user} />
+      <NewPostButton />
     </header>
   );
 };

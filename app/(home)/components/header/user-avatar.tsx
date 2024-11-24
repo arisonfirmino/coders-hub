@@ -1,10 +1,8 @@
-import { User } from "next-auth";
 import Image from "next/image";
+
 import { UserIcon } from "lucide-react";
 
-interface UserAvatarProps {
-  user: Pick<User, "image" | "name">;
-}
+import { UserAvatarProps } from "@/app/types";
 
 const UserAvatar = ({ user }: UserAvatarProps) => {
   return (

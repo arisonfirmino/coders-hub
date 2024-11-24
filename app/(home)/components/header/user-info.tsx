@@ -1,11 +1,8 @@
-import { User } from "@prisma/client";
-import SignOutButton from "@/app/(home)/components/signout-button";
+import SignOutButton from "@/app/(home)/components/auth/signout-button";
 
-interface UserSesctionProps {
-  user: User;
-}
+import { UserInfoProps } from "@/app/types";
 
-const UserSection = ({ user }: UserSesctionProps) => {
+const UserInfo = ({ user }: UserInfoProps) => {
   return (
     <div className="flex items-center gap-3">
       <SignOutButton user={user} />
@@ -17,4 +14,4 @@ const UserSection = ({ user }: UserSesctionProps) => {
   );
 };
 
-export default UserSection;
+export default UserInfo;

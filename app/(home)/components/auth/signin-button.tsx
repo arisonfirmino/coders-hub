@@ -1,9 +1,6 @@
 "use client";
 
-interface SignInButtonProps {
-  children: React.ReactNode;
-  handleSignInClick: () => void;
-}
+import { SignInButtonProps } from "@/app/types";
 
 const SignInButton = ({ children, handleSignInClick }: SignInButtonProps) => {
   return (

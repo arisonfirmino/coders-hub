@@ -1,14 +1,8 @@
-import { Prisma } from "@prisma/client";
-import PostAvatar from "@/app/(home)/components/post/post-avatar";
+import PostAvatar from "@/app/components/posts/post-avatar";
+
 import { formatDate } from "@/app/helpers/formatDate";
 
-interface PostUserProps {
-  post: Prisma.PostGetPayload<{
-    include: {
-      user: true;
-    };
-  }>;
-}
+import { PostUserProps } from "@/app/types";
 
 const PostUser = ({ post }: PostUserProps) => {
   return (

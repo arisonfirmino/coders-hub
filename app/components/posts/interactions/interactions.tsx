@@ -1,6 +1,6 @@
-import LikeButton from "@/app/components/interactions/like-button";
-import CommentsLink from "@/app/components/interactions/comments-link";
-import ShareButton from "@/app/components/interactions/share-button";
+import LikeButton from "@/app/components/posts/interactions/like-button";
+import CommentsLink from "@/app/components/posts/interactions/comments-link";
+import ShareButton from "@/app/components/posts/interactions/share-button";
 
 interface InteractionsProps {
   id: string;

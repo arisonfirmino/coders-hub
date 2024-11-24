@@ -1,7 +1,8 @@
-import { BookMarkedIcon } from "lucide-react";
 import Link from "next/link";
 
-const NewPost = () => {
+import { BookMarkedIcon } from "lucide-react";
+
+const NewPostButton = () => {
   return (
     <Link
       href="/new-post"
@@ -14,4 +15,4 @@ const NewPost = () => {
   );
 };
 
-export default NewPost;
+export default NewPostButton;
