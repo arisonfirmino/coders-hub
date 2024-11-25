@@ -46,20 +46,22 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
-  posts    Post[]
-  comments Comment[]
+  posts     Post[]
+  comments  Comment[]
+  favorites Favorite[]
 
   @@map("users")
 }
 
 model Post {
-  id           String    @id @default(cuid()) @map("_id")
+  id           String     @id @default(cuid()) @map("_id")
   project_name String
   description  String?
   deploy       String?
   topics       Topic[]
   comments     Comment[]
-  created_at   DateTime  @default(now())
+  favorites    Favorite[]
+  created_at   DateTime   @default(now())
 
   user   User   @relation(fields: [userId], references: [id])
   userId String
@@ -89,4 +91,17 @@ model Topic {
   postId String
 
   @@map("topics")
+}
+
+model Favorite {
+  id String @id @default(cuid()) @map("_id")
+
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId String
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  @@unique([userId, postId])
+  @@map("favorites")
 }

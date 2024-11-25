@@ -7,6 +7,7 @@ type PostPayloadWithRelations = Prisma.PostGetPayload<{
     user: true;
     topics: true;
     comments: true;
+    favorites: true;
   };
 }>;
 
@@ -70,7 +71,10 @@ export interface PostContentProps {
 
 // post-footer.tsx
 export interface PostFooterProps {
-  post: Pick<PostPayloadWithRelations, "id" | "deploy" | "comments">;
+  post: Pick<
+    PostPayloadWithRelations,
+    "id" | "deploy" | "comments" | "favorites"
+  >;
 }
 
 // post-topics-list.tsx
@@ -92,3 +96,10 @@ export type CommentsListProps = {
 export type CommentItemProps = {
   comment: CommentPayloadWithRelations;
 };
+
+// interactions.tsx
+export interface InteractionsProps {
+  id: string;
+  comments_length: number;
+  likes_length: number;
+}

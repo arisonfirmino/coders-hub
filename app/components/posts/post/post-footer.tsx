@@ -34,7 +34,11 @@ const PostFooter = ({ post }: PostFooterProps) => {
         )
       )}
       {pathname === "/" && <span className="text-gray-400">|</span>}
-      <Interactions id={post.id} comments_length={post.comments.length} />
+      <Interactions
+        id={post.id}
+        likes_length={post.favorites.length}
+        comments_length={post.comments.length}
+      />
     </div>
   );
 };

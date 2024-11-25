@@ -6,6 +6,7 @@ export const getPosts = async () => {
       user: true,
       topics: true,
       comments: true,
+      favorites: true,
     },
     orderBy: {
       created_at: "desc",
@@ -21,6 +22,7 @@ export const getPost = async ({ id }: { id: string }) => {
     include: {
       user: true,
       topics: true,
+      favorites: true,
       comments: {
         orderBy: {
           created_at: "desc",
