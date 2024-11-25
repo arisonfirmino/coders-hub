@@ -53,9 +53,9 @@ const LikeButton = ({
 
   return (
     <button
-      disabled={isLoading}
+      disabled={isLoading || !session}
       onClick={handleAddFavoriteClick}
-      className="flex items-center gap-2"
+      className={`flex items-center gap-2 ${isLoading || !session ? "cursor-not-allowed" : ""}`}
     >
       {isLoading ? (
         <LoaderCircleIcon size={16} className="animate-spin text-gray-400" />
