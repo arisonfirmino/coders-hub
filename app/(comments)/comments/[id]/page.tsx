@@ -45,7 +45,7 @@ const CommentsPage = async ({
         <PostItem post={post} />
       </div>
 
-      <div className="px-5 pb-40 pt-10 md:px-0">
+      <div className={`px-5 pt-10 md:px-0 ${session ? "pb-40" : "pb-5"}`}>
         <CommentsList comments={post.comments} />
       </div>
     </Container>

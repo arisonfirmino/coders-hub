@@ -54,7 +54,7 @@ const CommentForm = ({ postId, name }: CommentFormProps) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="fixed bottom-0 w-full max-w-2xl space-y-2.5 bg-container px-5 pb-5 pt-2.5 md:px-0"
+      className="fixed bottom-0 z-10 w-full max-w-2xl space-y-2.5 bg-container px-5 pb-5 pt-2.5 md:px-0"
     >
       <TextareaForm
         placeholder={`Deixe um comentário para ${name}`}
