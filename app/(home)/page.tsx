@@ -1,7 +1,6 @@
 import Container from "@/app/components/container";
 import Header from "@/app/(home)/components/header/header";
-import Search from "@/app/(home)/components/search";
-import PostsList from "@/app/components/posts/posts-list";
+import SearchWrapper from "@/app/(home)/components/search/search-wrapper";
 
 import { getPosts } from "@/app/helpers/getPost";
 
@@ -19,10 +18,7 @@ const Home = async () => {
         <Header />
       </div>
       <div className="px-5 pt-5 md:px-0">
-        <Search />
-      </div>
-      <div className="pb-5 pt-10">
-        <PostsList posts={posts} />
+        <SearchWrapper posts={posts} />
       </div>
     </Container>
   );

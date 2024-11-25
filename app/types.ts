@@ -103,3 +103,8 @@ export interface InteractionsProps {
   comments_length: number;
   likes_length: number;
 }
+
+// search-wrapper.tsx
+export interface SearchWrapperProps {
+  posts: PostPayloadWithRelations[];
+}
