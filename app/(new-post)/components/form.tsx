@@ -2,10 +2,13 @@
 
 import { useState } from "react";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
 import InputForm from "@/app/(new-post)/components/input-form";
 import TextareaForm from "@/app/components/textarea-form";
 import SubmitButton from "@/app/(new-post)/components/submit-button";
 import InputTags from "@/app/(new-post)/components/input-topics";
+
 import { XIcon } from "lucide-react";
 
 import { createNewPost } from "@/app/actions/post";
@@ -27,6 +30,8 @@ const Form = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const { data: session } = useSession();
+
+  const router = useRouter();
 
   const {
     register,
@@ -61,6 +66,7 @@ const Form = () => {
       reset();
       setTopics([]);
       setIsLoading(false);
+      router.replace("/");
     }
   };
 
