@@ -9,14 +9,16 @@ const NewPost = async () => {
         <GoBackButton />
       </div>
 
-      <div className="px-5 md:px-0">
+      <div className="px-5 pt-5 md:px-0">
         <p className="text-gray-400">
           Preencha o formulário abaixo e compartilhe seu projeto com a
           comunidade!
         </p>
       </div>
 
-      <Form />
+      <div className="pt-5">
+        <Form />
+      </div>
     </Container>
   );
 };
