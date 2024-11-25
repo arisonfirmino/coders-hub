@@ -8,6 +8,9 @@ import GoBackButton from "@/app/components/go-back-button";
 import PostItem from "@/app/components/posts/post-item";
 import CommentsList from "@/app/(comments)/components/comments-list";
 import CommentForm from "@/app/(comments)/components/comment-form";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/lib/auth";
+import SignInSection from "@/app/(home)/components/auth/signin-section";
 
 const CommentsPage = async ({
   params,
@@ -15,6 +18,8 @@ const CommentsPage = async ({
   params: Promise<{ id: string }>;
 }) => {
   const resolvedParams = await params;
+
+  const session = await getServerSession(authOptions);
 
   const post = await getPost({ id: resolvedParams.id });
 
@@ -24,6 +29,14 @@ const CommentsPage = async ({
 
   return (
     <Container>
+      {session ? (
+        <CommentForm postId={post.id} name={post.user.name ?? ""} />
+      ) : (
+        <div className="pt-5">
+          <SignInSection />
+        </div>
+      )}
+
       <div className="px-5 pt-5 md:px-0">
         <GoBackButton />
       </div>
@@ -35,8 +48,6 @@ const CommentsPage = async ({
       <div className="px-5 pb-40 pt-10 md:px-0">
         <CommentsList comments={post.comments} />
       </div>
-
-      <CommentForm postId={post.id} name={post.user.name ?? ""} />
     </Container>
   );
 };
