@@ -13,7 +13,7 @@ const Interactions = ({
     <div className="flex items-center gap-5">
       <LikeButton postId={id} likes_length={likes_length} />
       <CommentsLink id={id} comments_length={comments_length} />
-      <ShareButton />
+      <ShareButton id={id} />
     </div>
   );
 };
