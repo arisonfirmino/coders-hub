@@ -17,7 +17,7 @@ const Home = async () => {
       <div className="px-5 pt-5 md:px-0">
         <Header />
       </div>
-      <div className="px-5 pt-5 md:px-0">
+      <div className="pt-5">
         <SearchWrapper posts={posts} />
       </div>
     </Container>

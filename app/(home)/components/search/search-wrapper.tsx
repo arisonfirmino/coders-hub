@@ -23,10 +23,19 @@ const SearchWrapper = ({ posts }: SearchWrapperProps) => {
 
   return (
     <>
-      <Search onSearch={handleSearch} />
+      <div className="px-5 md:px-0">
+        <Search onSearch={handleSearch} />
+      </div>
 
       <div className="pb-5 pt-10">
-        <PostsList posts={filteredPosts} />
+        {posts.length > 0 ? (
+          <PostsList posts={filteredPosts} />
+        ) : (
+          <p className="text-center text-sm text-gray-400">
+            Ainda não há posts por aqui. Que tal ser o primeiro(a) a
+            compartilhar algo?
+          </p>
+        )}
       </div>
     </>
   );
