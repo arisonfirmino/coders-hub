@@ -10,3 +10,15 @@
 .border-bottom {
   border-bottom: 1px solid #9ca3af;
 }
+
+.header-background {
+  background: linear-gradient(
+    to bottom,
+    #0d1117 0%,
+    #15232a 20%,
+    #1b3d3e 40%,
+    #1f5548 60%,
+    #226d45 80%,
+    #238636 100%
+  );
+}

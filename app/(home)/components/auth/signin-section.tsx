@@ -3,7 +3,7 @@ import SignInGitHub from "@/app/(home)/components/auth/signin-github";
 
 const SignInSection = () => {
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 pt-5">
       <p className="text-center text-xs text-gray-400">
         © 2024 Arison. All Rights Reserved
       </p>
