@@ -42,7 +42,7 @@ const InputTopics = ({
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
       />
-      <Button disabled={isLoading} onClick={handleAddTopic}>
+      <Button type="button" disabled={isLoading} onClick={handleAddTopic}>
         <PlusCircleIcon size={16} />
       </Button>
     </div>

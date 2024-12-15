@@ -5,7 +5,7 @@ const NewPost = async () => {
   return (
     <div className="space-y-5 py-5">
       <GoBackButton />
-      <p className="px-5 text-foreground">
+      <p className="px-5 text-foreground md:px-0">
         Preencha o formulário abaixo e compartilhe seu projeto com a comunidade!
       </p>
       <Form />
