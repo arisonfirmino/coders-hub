@@ -2,11 +2,15 @@
 
 import { signIn } from "next-auth/react";
 
-import SignInButton from "@/app/(home)/components/auth/signin-button";
+import { Button } from "@/app/components/ui/button";
 
 const SignInGoogle = () => {
   return (
-    <SignInButton handleSignInClick={() => signIn("google")}>
+    <Button
+      variant="secondary"
+      onClick={async () => await signIn("google")}
+      className="w-full"
+    >
       <svg
         width="16"
         height="16"
@@ -43,7 +47,7 @@ const SignInGoogle = () => {
         </defs>
       </svg>
       Login com Google
-    </SignInButton>
+    </Button>
   );
 };
 

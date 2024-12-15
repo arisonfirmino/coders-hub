@@ -2,11 +2,15 @@
 
 import { signIn } from "next-auth/react";
 
-import SignInButton from "@/app/(home)/components/auth/signin-button";
+import { Button } from "@/app/components/ui/button";
 
 const SignInGitHub = () => {
   return (
-    <SignInButton handleSignInClick={() => signIn("github")}>
+    <Button
+      variant="secondary"
+      onClick={async () => await signIn("github")}
+      className="w-full"
+    >
       <svg
         width="16"
         height="16"
@@ -33,7 +37,7 @@ const SignInGitHub = () => {
         </defs>
       </svg>
       Login com GitHub
-    </SignInButton>
+    </Button>
   );
 };
 

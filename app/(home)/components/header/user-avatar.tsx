@@ -1,24 +1,22 @@
-import Image from "next/image";
+import { User } from "@prisma/client";
 
-import { UserIcon } from "lucide-react";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/app/components/ui/avatar";
 
-import { UserAvatarProps } from "@/app/types";
+interface UserAvatarProps {
+  user: Pick<User, "name" | "image">;
+}
 
 const UserAvatar = ({ user }: UserAvatarProps) => {
   return (
-    <div className="z-10 w-fit rounded-full bg-container p-2.5">
-      <div className="relative h-20 w-20 overflow-hidden rounded-full">
-        {user.image ? (
-          <Image
-            src={user.image}
-            alt={user.name ?? ""}
-            fill
-            className="object-cover"
-          />
-        ) : (
-          <UserIcon size={16} />
-        )}
-      </div>
+    <div className="z-10 w-fit rounded-full bg-background p-2.5">
+      <Avatar className="h-20 w-20">
+        <AvatarImage src={user.image ?? ""} />
+        <AvatarFallback>{user.name ?? ""}</AvatarFallback>
+      </Avatar>
     </div>
   );
 };

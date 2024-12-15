@@ -1,16 +1,16 @@
 import Link from "next/link";
 
+import { Button } from "@/app/components/ui/button";
+
 import { BookMarkedIcon } from "lucide-react";
 
 const NewPostButton = () => {
   return (
-    <Link
-      href="/new-post"
-      prefetch
-      className="flex w-full items-center justify-between rounded-lg bg-background px-2.5 py-1.5 text-sm uppercase"
-    >
-      Nova publicação
-      <BookMarkedIcon size={14} />
+    <Link href="/new-post" className="w-full">
+      <Button className="w-full justify-between uppercase">
+        Nova publicação
+        <BookMarkedIcon size={14} />
+      </Button>
     </Link>
   );
 };

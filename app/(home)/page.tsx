@@ -1,24 +1,18 @@
-import Container from "@/app/components/container";
-import Header from "@/app/(home)/components/header/header";
-import SearchWrapper from "@/app/(home)/components/search/search-wrapper";
-
 import { getPosts } from "@/app/helpers/getPost";
 
-const fetchPosts = async () => {
-  const posts = await getPosts();
-  return { posts };
-};
+import Header from "@/app/(home)/components/header/header";
+import { Separator } from "@/app/components/ui/separator";
+import PostsContainer from "@/app/(home)/components/posts/posts-container";
 
 const Home = async () => {
-  const { posts } = await fetchPosts();
+  const posts = await getPosts();
 
   return (
-    <Container>
+    <div className="space-y-5 pb-5">
       <Header />
-      <div className="pt-5">
-        <SearchWrapper posts={posts} />
-      </div>
-    </Container>
+      <Separator />
+      <PostsContainer posts={posts} />
+    </div>
   );
 };
 

@@ -1,6 +1,10 @@
+import { User } from "@prisma/client";
+
 import UserAvatar from "@/app/(home)/components/header/user-avatar";
 
-import { UserInfoProps } from "@/app/types";
+interface UserInfoProps {
+  user: Pick<User, "name" | "email" | "image">;
+}
 
 const UserInfo = ({ user }: UserInfoProps) => {
   return (
@@ -8,7 +12,7 @@ const UserInfo = ({ user }: UserInfoProps) => {
       <UserAvatar user={user} />
       <div className="text-center">
         <h2 className="text-xl font-semibold">{user.name}</h2>
-        <p className="text-gray-400">{user.email}</p>
+        <p className="text-foreground">{user.email}</p>
       </div>
     </div>
   );
