@@ -1,3 +1,5 @@
+import { Button } from "@/app/components/ui/button";
+
 import { LoaderCircleIcon, MoveRightIcon } from "lucide-react";
 
 interface SubmitButtonProps {
@@ -6,10 +8,10 @@ interface SubmitButtonProps {
 
 const SubmitButton = ({ isLoading }: SubmitButtonProps) => {
   return (
-    <button
+    <Button
       disabled={isLoading}
       type="submit"
-      className={`flex w-full items-center justify-between rounded-xl px-5 py-2.5 text-sm uppercase ${isLoading ? "cursor-not-allowed bg-gray-400" : "bg-background"}`}
+      className="w-full justify-between uppercase"
     >
       {isLoading ? "Publicando" : "Publicar"}
       {isLoading ? (
@@ -17,7 +19,7 @@ const SubmitButton = ({ isLoading }: SubmitButtonProps) => {
       ) : (
         <MoveRightIcon size={14} />
       )}
-    </button>
+    </Button>
   );
 };
 

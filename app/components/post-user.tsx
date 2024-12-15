@@ -2,7 +2,13 @@ import PostAvatar from "@/app/components/posts/post-avatar";
 
 import { formatDate } from "@/app/helpers/formatDate";
 
-import { PostUserProps } from "@/app/types";
+import { PostPayloadWithRelations } from "@/app/types";
+
+interface PostUserProps {
+  post: Pick<PostPayloadWithRelations, "user" | "created_at"> & {
+    user: Pick<PostPayloadWithRelations["user"], "name" | "image">;
+  };
+}
 
 const PostUser = ({ post }: PostUserProps) => {
   return (

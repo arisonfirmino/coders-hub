@@ -1,3 +1,11 @@
+import { Button } from "@/app/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/app/components/ui/tooltip";
+
 import { Redo2Icon } from "lucide-react";
 
 const ShareButton = ({ id }: { id: string }) => {
@@ -15,12 +23,18 @@ const ShareButton = ({ id }: { id: string }) => {
   };
 
   return (
-    <button
-      onClick={handleShare}
-      className="text-gray-400 active:text-background"
-    >
-      <Redo2Icon size={16} />
-    </button>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button size="sm" variant="ghost" onClick={handleShare}>
+            <Redo2Icon size={16} />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Compartilhar</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 };
 

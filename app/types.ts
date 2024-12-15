@@ -2,7 +2,7 @@ import { Post, Prisma, Topic, User } from "@prisma/client";
 
 type UserBasicInfo = Pick<User, "name" | "email" | "image">;
 
-type PostPayloadWithRelations = Prisma.PostGetPayload<{
+export type PostPayloadWithRelations = Prisma.PostGetPayload<{
   include: {
     user: true;
     topics: true;
@@ -11,7 +11,7 @@ type PostPayloadWithRelations = Prisma.PostGetPayload<{
   };
 }>;
 
-type CommentPayloadWithRelations = Prisma.CommentGetPayload<{
+export type CommentPayloadWithRelations = Prisma.CommentGetPayload<{
   include: {
     user: true;
     post: {

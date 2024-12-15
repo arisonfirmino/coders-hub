@@ -8,8 +8,11 @@ import Interactions from "@/app/components/posts/interactions/interactions";
 import { SquareArrowOutUpRightIcon } from "lucide-react";
 
 import { formatUrl } from "@/app/helpers/formatUrl";
+import { PostPayloadWithRelations } from "@/app/types";
 
-import { PostFooterProps } from "@/app/types";
+interface PostFooterProps {
+  post: PostPayloadWithRelations;
+}
 
 const PostFooter = ({ post }: PostFooterProps) => {
   const pathname = usePathname();
@@ -26,14 +29,14 @@ const PostFooter = ({ post }: PostFooterProps) => {
             href={post.deploy}
             target="_blank"
             rel="noreferrer"
-            className="flex w-fit items-center gap-2.5 hover:text-background hover:underline"
+            className="flex w-fit items-center gap-2.5 hover:text-primary hover:underline"
           >
             {formatUrl(post.deploy)}
             <SquareArrowOutUpRightIcon size={12} />
           </a>
         )
       )}
-      {pathname === "/" && <span className="text-gray-400">|</span>}
+      {pathname === "/" && <span className="text-foreground">|</span>}
       <Interactions
         id={post.id}
         likes_length={post.favorites.length}

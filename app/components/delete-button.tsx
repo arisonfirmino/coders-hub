@@ -1,6 +1,14 @@
 "use client";
 
 import { useState } from "react";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/app/components/ui/tooltip";
+
 import { LoaderCircleIcon, Trash2Icon } from "lucide-react";
 
 interface DeleteButtonProps {
@@ -23,17 +31,26 @@ const DeleteButton = ({ id, onDelete, onSuccess }: DeleteButtonProps) => {
   };
 
   return (
-    <button
-      disabled={isLoading}
-      onClick={handleDeleteClick}
-      className={`flex h-5 w-5 items-center justify-center rounded-full bg-red-600 ${isLoading ? "cursor-not-allowed" : ""} `}
-    >
-      {isLoading ? (
-        <LoaderCircleIcon size={12} className="animate-spin" />
-      ) : (
-        <Trash2Icon size={12} />
-      )}
-    </button>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <button
+            disabled={isLoading}
+            onClick={handleDeleteClick}
+            className={`flex h-5 w-5 items-center justify-center rounded-full bg-red-600 ${isLoading ? "cursor-not-allowed" : ""} `}
+          >
+            {isLoading ? (
+              <LoaderCircleIcon size={12} className="animate-spin" />
+            ) : (
+              <Trash2Icon size={12} />
+            )}
+          </button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Deletar</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 };
 

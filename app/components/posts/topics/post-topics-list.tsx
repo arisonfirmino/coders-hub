@@ -1,8 +1,12 @@
+import { Topic } from "@prisma/client";
+
 import TopicItem from "@/app/components/posts/topics/topic-item";
 
 import { useSortedTopics } from "@/app/helpers/useSortedTopics";
 
-import { PostTopicsListProps } from "@/app/types";
+interface PostTopicsListProps {
+  topics: Topic[];
+}
 
 const PostTopicsList = ({ topics }: PostTopicsListProps) => {
   const sortedTopics = useSortedTopics(topics);

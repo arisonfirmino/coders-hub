@@ -1,12 +1,14 @@
+import { Badge } from "@/app/components/ui/badge";
+
 import { formatTopics } from "@/app/helpers/formatTopics";
-import { TopicItemProps } from "@/app/types";
+import { Topic } from "@prisma/client";
+
+interface TopicItemProps {
+  topic: Pick<Topic, "topic_name">;
+}
 
 const TopicItem = ({ topic }: TopicItemProps) => {
-  return (
-    <span className="rounded-full bg-background px-2.5 pb-0.5 text-xs lowercase">
-      {formatTopics(topic.topic_name)}
-    </span>
-  );
+  return <Badge>{formatTopics(topic.topic_name)}</Badge>;
 };
 
 export default TopicItem;
